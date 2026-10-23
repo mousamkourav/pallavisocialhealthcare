@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/*
+ * Brand tokens sampled from the original Wix screenshots.
+ * - brand-green / brand-blue are the exact sampled values; use them for decorative fills, bars and borders.
+ * - green-ink / blue-ink are slightly deeper versions used wherever text sits on (or is) the colour,
+ *   so white-on-colour and colour-on-white text meets WCAG AA. See docs/KT.md → "Design decisions".
+ */
+@theme {
+  --color-brand-green: #64bc46;
+  --color-green-ink: #3d8527;
+  --color-brand-blue: #008dd1;
+  --color-blue-ink: #0077b3;
+  --color-navy: #0b3e66;
+  --color-lavender: #f0eefe;
+  --color-ink: #111111;
+  --color-muted: #4b5563;
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  --container-site: 64rem; /* ~1024px content column, as on the original */
+  --container-wide: 90rem;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brand-blue);
+  outline-offset: 2px;
+}
+
+/* Heading with the green full stop used throughout the About page ("WHAT WE DO.") */
+.dot-heading::after {
+  content: ".";
+  color: var(--color-brand-green);
+}
